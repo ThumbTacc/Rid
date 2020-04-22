@@ -5,11 +5,12 @@ using Discord;
 
 namespace Rid.Services.Guild
 {
-    public class GuildServie
+    public class GuildServie : IGuildService
     {
-        public async Task CreateRole(IGuild guild, string name, IEnumerable<GuildPermissions> permissions, Color color, bool isHoisted)
+        /// <inheritdoc/>
+        public async Task CreateRole(IGuild guild, string name, GuildPermissions permission, Color color, bool hoisted, bool mention)
         {
-            
+            await guild.CreateRoleAsync(name, permission, color, hoisted, mention);
         }
     }
 }
