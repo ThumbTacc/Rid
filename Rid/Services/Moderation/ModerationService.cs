@@ -4,7 +4,6 @@ using System.Threading.Tasks;
 using Discord;
 using Discord.WebSocket;
 using Rid.Helpers;
-using Rid.Services.Guild;
 
 namespace Rid.Services.Moderation
 {
@@ -15,7 +14,6 @@ namespace Rid.Services.Moderation
         public ModerationService(DiscordSocketClient client)
         {
             _client = client;
-            _guild = guild;
         }
 
         /// <inheritdoc/>

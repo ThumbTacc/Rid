@@ -1,13 +1,10 @@
 ﻿using System;
-using System.ComponentModel.Design;
-using System.Net.Mime;
 using System.Threading.Tasks;
 using Discord;
 using Discord.Commands;
 using Discord.WebSocket;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Rid.Services.Guild;
 using Rid.Services.Main;
 using Rid.Services.Moderation;
 
