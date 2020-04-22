@@ -15,7 +15,7 @@ namespace Rid.Data
         public static readonly string Token = Startup.Configuration["debug:token"];
 
         /// <summary>
-        /// The channel Id of the moderation log.
+        /// The moderation log channel Id.
         /// </summary>
         public static readonly ulong Log = ulong.Parse(Startup.Configuration["server:log"]);
     }
