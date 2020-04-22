@@ -42,7 +42,6 @@ namespace Rid.Bot
             provider.GetRequiredService<CommandHandler>();
 
             provider.GetRequiredService<IModerationService>();
-            provider.GetRequiredService<IGuildService>();
 
             await provider.GetRequiredService<StartupService>().StartAsync();
             await Task.Delay(-1);
@@ -65,8 +64,7 @@ namespace Rid.Bot
                 .AddSingleton<LoggingService>()
                 
                 .AddSingleton<IModerationService, ModerationService>()
-                .AddSingleton<IGuildService, GuildServie>()
-                
+
                 .AddSingleton(Configuration);
         }
     }

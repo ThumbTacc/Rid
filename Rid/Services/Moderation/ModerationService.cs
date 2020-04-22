@@ -11,9 +11,8 @@ namespace Rid.Services.Moderation
     public class ModerationService : IModerationService
     {
         private readonly DiscordSocketClient _client;
-        private readonly IGuildService _guild;
 
-        public ModerationService(DiscordSocketClient client, IGuildService guild)
+        public ModerationService(DiscordSocketClient client)
         {
             _client = client;
             _guild = guild;
@@ -64,7 +63,7 @@ namespace Rid.Services.Moderation
         /// <inheritdoc/>
         public async Task<IRole> CreateMuteRole(IGuild guild)
         {
-            await _guild.CreateRole(guild, "rid-muted", new GuildPermissions(sendMessages: false), default, false, false);
+            await guild.CreateRoleAsync("rid-muted", new GuildPermissions(sendMessages: false), default, false, false);
             return guild.Roles.First(r => r.Name == "rid-muted");
         }
         
