@@ -1,8 +1,2 @@
 # Rid
-Rid is a custom Discord bot created for the [RidMC Discord Server](https://discord.gg/P6dgPQ). The bot includes basic moderation features and is intended to be used only by staff members.
-
-## Upcoming
-- Warn command
-- Info commands
-- Log channel
-- Infraction messages
+Rid is a custom Discord bot created for the RidMC [Discord server](https://discord.gg/P6dgPQ). The bot includes basic moderation, server information, and giveaway features, and is intended to be used only by staff members.
