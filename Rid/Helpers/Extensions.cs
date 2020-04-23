@@ -4,6 +4,9 @@ using Discord.WebSocket;
 
 namespace Rid.Helpers
 {
+    /// <summary>
+    /// Represents a class of static helper extension methods.
+    /// </summary>
     public static class Extensions
     {
         /// <summary>

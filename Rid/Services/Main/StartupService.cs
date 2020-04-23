@@ -9,25 +9,31 @@ using Rid.Data;
 
 namespace Rid.Services.Main
 {
+    /// <summary>
+    /// Describes a service that handles the loading of various features of the bot on startup.
+    /// </summary>
     public class StartupService
     {
         private readonly DiscordSocketClient _client;
         private readonly CommandService _commands;
         private readonly IServiceProvider _services;
-        private readonly IConfigurationRoot _config;
 
         public StartupService(
             DiscordSocketClient client, 
             CommandService commands, 
-            IServiceProvider services, 
-            IConfigurationRoot config)
+            IServiceProvider services)
         {
             _client = client;
             _commands = commands;
             _services = services;
-            _config = config;
         }
         
+        /// <summary>
+        /// Starts the bot.
+        /// </summary>
+        /// <returns>
+        /// A <see cref="Task"/> that returns upon completion.
+        /// </returns>
         public async Task StartAsync()
         {
             var token = Config.Token;

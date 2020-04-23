@@ -8,10 +8,17 @@ using Rid.Helpers;
 
 namespace Rid.Services.Moderation
 {
+    /// <summary>
+    /// Implements <see cref="IModerationService"/>.
+    /// </summary>
     public class ModerationService : IModerationService
     {
         private readonly DiscordSocketClient _client;
 
+        /// <summary>
+        /// Constructs a new <see cref="ModerationService"/> with the given injected dependencies.
+        /// </summary>
+        /// <param name="client">The Discord client."/></param>
         public ModerationService(DiscordSocketClient client)
         {
             _client = client;

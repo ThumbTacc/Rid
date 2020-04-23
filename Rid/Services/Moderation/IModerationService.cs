@@ -3,6 +3,9 @@ using Discord;
 
 namespace Rid.Services.Moderation
 {
+    /// <summary>
+    /// Describes a service for performing moderation actions, within the application, within the context of a single incoming request.
+    /// </summary>
     public interface IModerationService
     {
         /// <summary>
