@@ -1,4 +1,6 @@
-<img align="center" src="<img align="..." src="..." alt="...">
+<p align="center">
+  <img width="460" height="300" src="https://cdn.discordapp.com/icons/610398093762101249/a_f72bfc1757717b8be0a0aab70c71963a.jpg">
+</p>
 
 ## Introduction
 Rid is a custom Discord bot created for the RidMC [Discord server](https://discord.gg/P6dgPQ). The bot includes basic moderation, server information, and (upcoming) giveaway features, and is intended to be used only by staff members.
