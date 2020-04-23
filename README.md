@@ -6,7 +6,7 @@ This project is licensed under the MIT License (see [LICENSE](https://github.com
 - You do not claim you made this bot.
 - You do not use the Rid brand.
     - You may use the name "Rid".
-    - You may not use any official Rid logo, are any logo that impersonates Rid.
+    - You may not use any official or impersonation Rid logo. 
 - You do not claim that your cloned bot is an official Rid bot.
 
 ### Installation
