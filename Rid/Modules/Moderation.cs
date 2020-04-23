@@ -34,7 +34,7 @@ namespace Rid.Modules
                 await _moderation.Ban(Context.Guild, user, Context.User, prune, reason);
                 var builders = await _log.CreateLog(user, Context.User, reason, Infraction.Ban);
                 var channel = Context.Guild.GetChannel(Config.Log) as IMessageChannel;
-                await channel.SendMessageAsync(embed: Embeds.CreateLogEmbed("Log", builders));
+                await channel.SendMessageAsync(embed: Embeds.CreateEmbed("Log", builders));
             }
             catch (Exception e)
             {
@@ -67,7 +67,7 @@ namespace Rid.Modules
                 await _moderation.Mute(Context.Guild, user, Context.User, period, reason);
                 var builders = await _log.CreateLog(user, Context.User, reason, Infraction.Mute);
                 var channel = Context.Guild.GetChannel(Config.Log) as IMessageChannel;
-                await channel.SendMessageAsync(embed: Embeds.CreateLogEmbed("Log", builders));
+                await channel.SendMessageAsync(embed: Embeds.CreateEmbed("Log", builders));
             }
             catch (Exception e)
             {
@@ -85,7 +85,7 @@ namespace Rid.Modules
                 await _moderation.Kick(user, Context.User, reason);
                 var builders = await _log.CreateLog(user, Context.User, reason, Infraction.Kick);
                 var channel = Context.Guild.GetChannel(Config.Log) as IMessageChannel;
-                await channel.SendMessageAsync(embed: Embeds.CreateLogEmbed("Log", builders));
+                await channel.SendMessageAsync(embed: Embeds.CreateEmbed("Log", builders));
             }
             catch (Exception e)
             {
@@ -102,7 +102,7 @@ namespace Rid.Modules
             {
                 var builders = await _log.CreateLog(user, Context.User, reason, Infraction.Warn);
                 var channel = Context.Guild.GetChannel(Config.Log) as IMessageChannel;
-                await channel.SendMessageAsync(embed: Embeds.CreateLogEmbed("Log", builders));
+                await channel.SendMessageAsync(embed: Embeds.CreateEmbed("Log", builders));
             }
             catch (Exception e)
             {
