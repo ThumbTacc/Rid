@@ -5,6 +5,7 @@ using Discord.Commands;
 using Discord.WebSocket;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Rid.Services.Log;
 using Rid.Services.Main;
 using Rid.Services.Moderation;
 
@@ -39,6 +40,7 @@ namespace Rid.Bot
             provider.GetRequiredService<CommandHandler>();
 
             provider.GetRequiredService<IModerationService>();
+            provider.GetRequiredService<ILogService>();
 
             await provider.GetRequiredService<StartupService>().StartAsync();
             await Task.Delay(-1);
@@ -61,6 +63,7 @@ namespace Rid.Bot
                 .AddSingleton<LoggingService>()
                 
                 .AddSingleton<IModerationService, ModerationService>()
+                .AddSingleton<ILogService, LogService>()
 
                 .AddSingleton(Configuration);
         }

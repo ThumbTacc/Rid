@@ -36,6 +36,15 @@ namespace Rid.Services.Moderation
         /// Intended for use on a user who is not in the server.
         /// </remarks>
         Task BanForeign(IGuild guild, ulong userId, IUser executor, int prune, string reason);
+        
+        /// <summary>
+        /// Kicks a user from the specified guild.
+        /// </summary>
+        /// <param name="user">The user to be kicked.</param>
+        /// <param name="executor">The executor of the command.</param>
+        /// <param name="reason">The reason for the kick.</param>
+        /// <returns></returns>
+        Task Kick(IUser user, IUser executor, string reason);
 
         /// <summary>
         /// Creates a mute in the specified guild.
@@ -61,14 +70,5 @@ namespace Rid.Services.Moderation
         /// Specifically created for usage in the Mute command.
         /// </remarks>
         Task<IRole> CreateMuteRole(IGuild guild);
-        
-        /// <summary>
-        /// Kicks a user from the specified guild.
-        /// </summary>
-        /// <param name="user">The user to be kicked.</param>
-        /// <param name="executor">The executor of the command.</param>
-        /// <param name="reason">The reason for the kick.</param>
-        /// <returns></returns>
-        Task Kick(IUser user, IUser executor, string reason);
     }
 }

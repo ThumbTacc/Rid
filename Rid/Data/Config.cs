@@ -17,6 +17,6 @@ namespace Rid.Data
         /// <summary>
         /// The moderation log channel Id.
         /// </summary>
-        public static readonly ulong Log = ulong.Parse(Startup.Configuration["server:log"]);
+        public const ulong Log = 702617427577536562;
     }
 }

@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using Discord;
+using Discord.Rest;
 using Discord.WebSocket;
 using Rid.Helpers;
 
@@ -43,6 +44,19 @@ namespace Rid.Services.Moderation
                 throw new Exception("You cannot ban this user.");
             }
         }
+        
+        /// <inheritdoc/>
+        public async Task Kick(IUser user, IUser executor, string reason)
+        {
+            if (executor.IsHigher(user))
+            {
+                await (user as IGuildUser).KickAsync(reason);
+            }
+            else
+            {
+                throw new Exception("You cannot mute this user.");
+            }
+        }
 
         /// <inheritdoc/>
         public async Task Mute(IGuild guild, IUser user, IUser executor, double period, string reason)
@@ -61,21 +75,15 @@ namespace Rid.Services.Moderation
         /// <inheritdoc/>
         public async Task<IRole> CreateMuteRole(IGuild guild)
         {
-            await guild.CreateRoleAsync("rid-muted", new GuildPermissions(sendMessages: false), default, false, false);
-            return guild.Roles.First(r => r.Name == "rid-muted");
-        }
-        
-        /// <inheritdoc/>
-        public async Task Kick(IUser user, IUser executor, string reason)
-        {
-            if (executor.IsHigher(user))
+            var role = guild.Roles.FirstOrDefault(r => r.Name == "rid-muted.");
+            
+            if (role == null)
             {
-                await (user as IGuildUser).KickAsync(reason);
+                await guild.CreateRoleAsync("rid-muted", new GuildPermissions(sendMessages: false), default, false, false);
+                return guild.Roles.First(r => r.Name == "rid-muted");
             }
-            else
-            {
-                throw new Exception("You cannot ban this user.");
-            }
+            
+            return role;
         }
     }
 }
