@@ -6,7 +6,7 @@ using Rid.Enums;
 namespace Rid.Services.Log
 {
     /// <summary>
-    /// Describes a service for performing moderation log actions, within the application, within the context of single incoming request.
+    /// Describes a service for performing moderation log actions.
     /// </summary>
     public interface ILogService
     {

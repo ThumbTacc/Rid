@@ -7,6 +7,9 @@ using Rid.Helpers;
 
 namespace Rid.Services.Log
 {
+    /// <summary>
+    /// Implements <see cref="ILogService"/>.
+    /// </summary>
     public class LogService : ILogService
     {
         /// <inheritdoc/>

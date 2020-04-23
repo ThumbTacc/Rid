@@ -10,7 +10,7 @@ namespace Rid.Data
         public static readonly string Token = Startup.Configuration["debug:token"];
         
         /// <summary>
-        /// The default Prefix.
+        /// The default command Prefix.
         /// </summary>
         public const string Prefix = "?";
 
