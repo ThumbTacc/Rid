@@ -82,7 +82,7 @@ namespace Rid.Services.Moderation
         /// <inheritdoc/>
         public async Task<IRole> CreateMuteRole(IGuild guild)
         {
-            var role = guild.Roles.FirstOrDefault(r => r.Name == "rid-muted.");
+            var role = guild.Roles.FirstOrDefault(r => r.Name == "rid-muted");
             
             if (role == null)
             {
