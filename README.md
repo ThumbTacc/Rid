@@ -2,7 +2,7 @@
 Rid is a custom Discord bot created for the Rid [Discord server](https://discord.gg/P6dgPQ). The bot includes basic moderation, server information, and (upcoming) giveaway features, and is intended to be used only by staff members.
 
 ### Usage
-This project is licensed under the MIT License (see [LICENSE](https://github.com/Uchuuuu/Rid/blob/master/LICENSE). Please feel free to clone this repository and use Rid as long as:
+This project is licensed under the MIT License (see [LICENSE](https://github.com/Uchuuuu/Rid/blob/master/LICENSE)). Please feel free to clone this repository and use Rid as long as:
 - You do not claim you made this bot.
 - You do not use the Rid brand.
     - You may use the name "Rid".
