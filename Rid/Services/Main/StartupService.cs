@@ -18,6 +18,12 @@ namespace Rid.Services.Main
         private readonly CommandService _commands;
         private readonly IServiceProvider _services;
 
+        /// <summary>
+        /// Creates a new <see cref="StartupService"/> object with the given injected dependencies.
+        /// </summary>
+        /// <param name="client">The Discord client.</param>
+        /// <param name="commands">The Discord command service.</param>
+        /// <param name="services">The application service provider.</param>
         public StartupService(
             DiscordSocketClient client, 
             CommandService commands, 
