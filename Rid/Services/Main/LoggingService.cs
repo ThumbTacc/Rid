@@ -38,8 +38,10 @@ namespace Rid.Services.Main
         /// Handles the logging of console information. If the log folder does not exist, it is created. Log information
         /// is stored in this generated file. 
         /// </summary>
-        /// <param name="msg"></param>
-        /// <returns></returns>
+        /// <param name="msg">The log contents.</param>
+        /// <returns>
+        /// A <see cref="Task"/> that returns upon completion.
+        /// </returns>
         private Task OnLogAsync(LogMessage msg)
         {
             if (!Directory.Exists(LogDirectory))

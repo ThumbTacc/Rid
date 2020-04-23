@@ -14,7 +14,7 @@ namespace Rid.Services.Help
         /// modules.
         /// </summary>
         /// <returns>
-        /// An <see cref="IEnumerable{T}"/>.
+        /// An <see cref="IEnumerable{T}"/> list of bot modules.
         /// </returns>
         IEnumerable<EmbedFieldBuilder> ListModules();
         
@@ -23,7 +23,7 @@ namespace Rid.Services.Help
         /// </summary>
         /// <param name="module">The name of the module to be searched for.</param>
         /// <returns>
-        /// A <see cref="ModuleInfo"/>.
+        /// A <see cref="ModuleInfo"/> of the specified bot module.
         /// </returns>
         ModuleInfo GetModuleInfo(string module);
         
@@ -31,7 +31,7 @@ namespace Rid.Services.Help
         /// Gets an <see cref="IEnumerable{T}"/> of <see cref="ModuleInfo"/> of all modules.
         /// </summary>
         /// <returns>
-        /// An <see cref="IEnumerable{T}"/>.
+        /// An <see cref="IEnumerable{T}"/> of all bot modules.
         /// </returns>
         IEnumerable<ModuleInfo> GetAllModuleInfo();
         
@@ -41,7 +41,7 @@ namespace Rid.Services.Help
         /// </summary>
         /// <param name="module">The module in which the commands are located.</param>
         /// <returns>
-        /// An <see cref="IEnumerable{T}"/>.
+        /// An <see cref="IEnumerable{T}"/> the specified module commands.
         /// </returns>
         IEnumerable<EmbedFieldBuilder> ListCommands(ModuleInfo module);
         
@@ -50,7 +50,7 @@ namespace Rid.Services.Help
         /// </summary>
         /// <param name="module">The name of the module to be searched for.</param>
         /// <returns>
-        /// A <see cref="CommandInfo"/>.
+        /// A <see cref="CommandInfo"/> of the specified module.
         /// </returns>
         CommandInfo GetCommandInfo(string module);
     }

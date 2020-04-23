@@ -8,7 +8,7 @@ using Rid.Data;
 namespace Rid.Services.Main
 {
     /// <summary>
-    /// Describes a service that handles all incoming messages. If the message is determined to be a command,
+    /// Describes a service that handles the incoming <see cref="SocketMessage"/>. If the message is determined to be a command,
     /// it executes the command and handles the post-execution result.
     /// </summary>
     public class CommandHandler
@@ -37,9 +37,9 @@ namespace Rid.Services.Main
         }
 
         /// <summary>
-        /// Evaluates an incoming message and executes the message if it is determined to be a command.
+        /// Evaluates an incoming <see cref="SocketMessage"/> and executes the message if it is determined to be a command.
         /// </summary>
-        /// <param name="msg">The incoming message.</param>
+        /// <param name="msg">The incoming <see cref="SocketMessage"/>.</param>
         /// <returns>
         /// A <see cref="Task"/> that returns upon completion.
         /// </returns>
@@ -61,10 +61,10 @@ namespace Rid.Services.Main
         }
 
         /// <summary>
-        /// Handles the post-execution of a command regardless of its final execution state.
+        /// Handles the post-execution of a regardless of its final execution state.
         /// </summary>
         /// <param name="command">The command that was executed.</param>
-        /// <param name="context">The context of the command.</param>
+        /// <param name="context">The <see cref="ICommandContext"/> of the command.</param>
         /// <param name="result">The result of the command execution.</param>
         /// <returns>
         /// A <see cref="Task"/> that returns upon completion.
