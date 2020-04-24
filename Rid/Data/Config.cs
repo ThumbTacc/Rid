@@ -1,8 +1,10 @@
 ﻿using Rid.Bot;
-using Rid.Services.Main;
 
 namespace Rid.Data
 {
+    /// <summary>
+    /// A class that represents static variables.
+    /// </summary>
     public static class Config
     {
         /// <summary>
