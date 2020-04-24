@@ -1,5 +1,8 @@
 ﻿namespace Rid.Enums
 {
+    /// <summary>
+    /// Represents all possible infraction types.
+    /// </summary>
     public enum Infraction
     {
         /// <summary>

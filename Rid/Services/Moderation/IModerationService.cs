@@ -1,6 +1,8 @@
-﻿using System.Threading.Tasks;
+﻿using System.Threading;
+using System.Threading.Tasks;
 using Discord;
 using Discord.WebSocket;
+using Rid.Enums;
 
 namespace Rid.Services.Moderation
 {
@@ -66,6 +68,18 @@ namespace Rid.Services.Moderation
         Task Mute(IGuild guild, IUser user, IUser executor, double period, string reason);
 
         /// <summary>
+        /// Starts a <see cref="Timer"/> that will remove the muted role when it finishes.
+        /// </summary>
+        /// <param name="period">The period of the mute.</param>
+        /// <param name="measure">The <see cref="Measure"/> span.</param>
+        /// <param name="user">The muted <see cref="IUser"/>.</param>
+        /// <param name="guild">The <see cref="IGuild"/> where the mute exists.</param>
+        /// <returns>
+        /// A <see cref="Task"/> that returns upon completion.
+        /// </returns>
+        Task StartTimer(IGuild guild, IUser user, double period, Measure measure);
+        
+        /// <summary>
         /// Creates a mute role in the specified <see cref="IGuild"/>.
         /// </summary>
         /// <param name="guild">The <see cref="IGuild"/> where the role is to be created.</param>
@@ -75,6 +89,6 @@ namespace Rid.Services.Moderation
         /// <remarks>
         /// Intended for use with the mute command.
         /// </remarks>
-        Task<IRole> CreateMuteRole(IGuild guild);
+        Task<IRole> GetOrCreateMuteRole(IGuild guild);
     }
 }

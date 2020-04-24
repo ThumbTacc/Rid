@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using Discord;
 using Discord.WebSocket;
+using Rid.Enums;
 using Rid.Helpers;
 
 namespace Rid.Services.Moderation
@@ -22,6 +24,8 @@ namespace Rid.Services.Moderation
         {
             _client = client;
         }
+
+        private Timer _timer;
 
         /// <inheritdoc/>
         public async Task Ban(IGuild guild, IUser user, IUser executor, int prune, string reason)
@@ -69,7 +73,7 @@ namespace Rid.Services.Moderation
         {
             if (executor.IsHigher(user))
             {
-                var role = await CreateMuteRole(guild);
+                var role = await GetOrCreateMuteRole(guild);
                 await (user as IGuildUser).AddRoleAsync(role);
             }
             else
@@ -79,7 +83,20 @@ namespace Rid.Services.Moderation
         }
 
         /// <inheritdoc/>
-        public async Task<IRole> CreateMuteRole(IGuild guild)
+        public async Task StartTimer(IGuild guild, IUser user, double period, Measure measure)
+        {
+            var timespan = period.ParsePeriod(measure);
+
+            _timer = new Timer(async _ => 
+            {
+                var role = await GetOrCreateMuteRole(guild);
+                await (user as IGuildUser).RemoveRoleAsync(role);
+            }, 
+                null, timespan, TimeSpan.Zero);
+        }
+        
+        /// <inheritdoc/>
+        public async Task<IRole> GetOrCreateMuteRole(IGuild guild)
         {
             var role = guild.Roles.FirstOrDefault(r => r.Name == "rid-muted");
             

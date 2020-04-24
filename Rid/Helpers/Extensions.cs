@@ -1,6 +1,8 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using Discord;
 using Discord.WebSocket;
+using Rid.Enums;
 
 namespace Rid.Helpers
 {
@@ -33,6 +35,25 @@ namespace Rid.Helpers
         public static bool HasRole(this IGuild guild, string role)
         {
             return guild.Roles.FirstOrDefault(r => r.Name == role) != null;
+        }
+
+        /// <summary>
+        /// Parses a given period to a <see cref="TimeSpan"/> depending on the specified <see cref="Measure"/>.
+        /// </summary>
+        /// <param name="period">The period to be parsed.</param>
+        /// <param name="measure">The measure the period is to be spanned to.</param>
+        /// <returns>
+        /// A <see cref="TimeSpan"/> that represents the parsed period.
+        /// </returns>
+        public static TimeSpan ParsePeriod(this double period, Measure measure)
+        {
+            return measure switch
+            {
+                Measure.Days => TimeSpan.FromDays(period),
+                Measure.Hours => TimeSpan.FromHours(period),
+                Measure.Minutes => TimeSpan.FromMinutes(period),
+                _ => TimeSpan.FromSeconds(period)
+            };
         }
     }
 }

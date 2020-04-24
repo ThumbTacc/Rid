@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Threading;
 using System.Threading.Tasks;
 using Discord;
 using Discord.Commands;
@@ -92,13 +93,14 @@ namespace Rid.Bot
                 .AddSingleton<StartupService>()
                 .AddSingleton<LoggingService>()
 
-                .AddSingleton<IModerationService, ModerationService>()
-                .AddSingleton<ILogService, LogService>()
-                .AddSingleton<IHelpService, HelpService>()
-                .AddSingleton<IUtilityService, UtilityService>()
-
-                .AddSingleton(typeof(Stopwatch))
-                .AddSingleton(Configuration);
+                .AddScoped<IModerationService, ModerationService>()
+                .AddScoped<ILogService, LogService>()
+                .AddScoped<IHelpService, HelpService>()
+                .AddScoped<IUtilityService, UtilityService>()
+                
+                .AddSingleton(Configuration)
+                .AddScoped<Stopwatch>()
+                .AddScoped<Timer>();
         }
     }
 }

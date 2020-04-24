@@ -39,8 +39,10 @@ namespace Rid.Modules
             try
             {
                 await _moderation.Ban(Context.Guild, user, Context.User, prune, reason);
+                
                 var builders = await _log.CreateLog(user, Context.User, reason, Infraction.Ban);
                 var channel = Context.Guild.GetChannel(Config.Log) as IMessageChannel;
+                
                 await channel.SendMessageAsync(embed: Embeds.CreateEmbed("Log", builders));
             }
             catch (Exception e)
@@ -80,20 +82,34 @@ namespace Rid.Modules
             IUser user, 
             [Summary("The length of the mute in minutes.\n(Default: 10)")]
             double period = 10, 
+            [Summary("The mute period span.\n(Default: Minutes)\n(Available: Seconds, Minutes, Hours, Days)")]
+            Measure measure = Measure.Minutes,
             [Summary("The reason for the mute.\n(Default: \"No Reason Provided.\")")]
             string reason = "No Reason Provided.")
         {
+            /*
             try
             {
                 await _moderation.Mute(Context.Guild, user, Context.User, period, reason);
+                await _moderation.StartTimer(Context.Guild, user, period, measure);
+                
                 var builders = await _log.CreateLog(user, Context.User, reason, Infraction.Mute);
                 var channel = Context.Guild.GetChannel(Config.Log) as IMessageChannel;
+                
                 await channel.SendMessageAsync(embed: Embeds.CreateEmbed("Log", builders));
             }
             catch (Exception e)
             {
                 await ReplyAsync(e.Message);
             }
+            */
+            await _moderation.Mute(Context.Guild, user, Context.User, period, reason);
+            await _moderation.StartTimer(Context.Guild, user, period, measure);
+                
+            var builders = await _log.CreateLog(user, Context.User, reason, Infraction.Mute);
+            var channel = Context.Guild.GetChannel(Config.Log) as IMessageChannel;
+                
+            await channel.SendMessageAsync(embed: Embeds.CreateEmbed("Log", builders));
         }
 
         [Command("kick")]
@@ -109,8 +125,10 @@ namespace Rid.Modules
             try
             {
                 await _moderation.Kick(user, Context.User, reason);
+                    
                 var builders = await _log.CreateLog(user, Context.User, reason, Infraction.Kick);
                 var channel = Context.Guild.GetChannel(Config.Log) as IMessageChannel;
+                
                 await channel.SendMessageAsync(embed: Embeds.CreateEmbed("Log", builders));
             }
             catch (Exception e)
@@ -133,6 +151,7 @@ namespace Rid.Modules
             {
                 var builders = await _log.CreateLog(user, Context.User, reason, Infraction.Warn);
                 var channel = Context.Guild.GetChannel(Config.Log) as IMessageChannel;
+                
                 await channel.SendMessageAsync(embed: Embeds.CreateEmbed("Log", builders));
             }
             catch (Exception e)

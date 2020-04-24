@@ -17,7 +17,7 @@ namespace Rid.Data
         /// <summary>
         /// The default command Prefix.
         /// </summary>
-        public const string Prefix = "?";
+        public const string Prefix = ".";
         
         /// <summary>
         /// The moderation log channel Id.

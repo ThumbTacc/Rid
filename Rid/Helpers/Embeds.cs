@@ -9,6 +9,11 @@ namespace Rid.Helpers
     public static class Embeds
     {
         /// <summary>
+        /// Represents the Discord "Dark, but not black" brand colour.
+        /// </summary>
+        private static readonly Color _default = new Color(44, 47, 51);
+        
+        /// <summary>
         /// Creates a generic <see cref="Embed"/>.
         /// </summary>
         /// <param name="title">The title of the embed.</param>
@@ -21,6 +26,7 @@ namespace Rid.Helpers
         public static Embed CreateEmbed(string title, IEnumerable<EmbedFieldBuilder> fields, string footer = null, string url = null)
         {
             return new EmbedBuilder()
+                .WithColor(_default)
                 .WithTitle(title)
                 .WithFields(fields)
                 .WithFooter(footer)
