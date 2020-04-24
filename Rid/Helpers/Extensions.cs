@@ -15,7 +15,7 @@ namespace Rid.Helpers
         /// <param name="user1">The first user to be compared.</param>
         /// <param name="user2">The second user to be compared.</param>
         /// <returns>
-        /// A <see cref="bool"/>.
+        /// A <see cref="bool"/> which determines whether the first user is above the second user in hierarchy.
         /// </returns>
         public static bool IsHigher(this IUser user1, IUser user2)
         {
@@ -28,7 +28,7 @@ namespace Rid.Helpers
         /// <param name="guild">The guild where the role is to be looked for.</param>
         /// <param name="role">The name of the role to be looked for.</param>
         /// <returns>
-        /// A <see cref="bool"/>.
+        /// A <see cref="bool"/> which determines whether the guild has the specified role by name.
         /// </returns>
         public static bool HasRole(this IGuild guild, string role)
         {

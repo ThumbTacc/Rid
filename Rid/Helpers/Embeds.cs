@@ -13,10 +13,10 @@ namespace Rid.Helpers
         /// </summary>
         /// <param name="title">The title of the embed.</param>
         /// <param name="fields">The included fields of the embed.</param>
-        /// <param name="footer"></param>
-        /// <param name="url"></param>
+        /// <param name="footer">The footer of the embed.</param>
+        /// <param name="url">The thumbnail URL of the embed.</param>
         /// <returns>
-        /// An <see cref="Embed"/>.
+        /// An <see cref="Embed"/> for sending generic messages.
         /// </returns>
         public static Embed CreateEmbed(string title, IEnumerable<EmbedFieldBuilder> fields, string footer = null, string url = null)
         {
