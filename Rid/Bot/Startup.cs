@@ -25,7 +25,7 @@ namespace Rid.Bot
         /// <summary>
         /// Creates a new <see cref="IConfigurationRoot"/> object that contains bot configuration data.
         /// </summary>
-        /// <param name="args">Constructor argument.</param>
+        /// <param name="args">The constructor argument.</param>
         public Startup(string[] args)
         {
             var builder = new ConfigurationBuilder()
@@ -38,7 +38,7 @@ namespace Rid.Bot
         /// <summary>
         /// Runs the bot application.
         /// </summary>
-        /// <param name="args">Constructor argument.</param>
+        /// <param name="args">The constructor argument.</param>
         /// <returns>
         /// A <see cref="Task"/> that returns upon completion.
         /// </returns>
