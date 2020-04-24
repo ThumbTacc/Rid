@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using Discord;
 using Discord.Commands;
@@ -9,6 +10,7 @@ using Rid.Services.Help;
 using Rid.Services.Log;
 using Rid.Services.Main;
 using Rid.Services.Moderation;
+using Rid.Services.Utility;
 
 namespace Rid.Bot
 {
@@ -42,7 +44,8 @@ namespace Rid.Bot
 
             provider.GetRequiredService<IModerationService>();
             provider.GetRequiredService<ILogService>();
-            provider.GetService<IHelpService>();
+            provider.GetRequiredService<IHelpService>();
+            provider.GetRequiredService<IUtilityService>();
 
             await provider.GetRequiredService<StartupService>().StartAsync();
             await Task.Delay(-1);
@@ -63,11 +66,13 @@ namespace Rid.Bot
                 .AddSingleton<CommandHandler>()
                 .AddSingleton<StartupService>()
                 .AddSingleton<LoggingService>()
-                
+
                 .AddSingleton<IModerationService, ModerationService>()
                 .AddSingleton<ILogService, LogService>()
                 .AddSingleton<IHelpService, HelpService>()
+                .AddSingleton<IUtilityService, UtilityService>()
 
+                .AddSingleton(typeof(Stopwatch))
                 .AddSingleton(Configuration);
         }
     }

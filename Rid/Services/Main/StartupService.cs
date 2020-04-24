@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Reflection;
 using System.Threading.Tasks;
 using Discord;
@@ -17,6 +18,11 @@ namespace Rid.Services.Main
         private readonly DiscordSocketClient _client;
         private readonly CommandService _commands;
         private readonly IServiceProvider _services;
+        
+        /// <summary>
+        /// A static <see cref="Stopwatch"/> object that records the time since the bot application started.
+        /// </summary>
+        public static readonly Stopwatch Stopwatch = new Stopwatch();
 
         /// <summary>
         /// Creates a new <see cref="StartupService"/> object with the given injected dependencies.
@@ -32,8 +38,10 @@ namespace Rid.Services.Main
             _client = client;
             _commands = commands;
             _services = services;
+            
+            Stopwatch.Start();
         }
-        
+
         /// <summary>
         /// Starts the bot.
         /// </summary>
@@ -42,8 +50,13 @@ namespace Rid.Services.Main
         /// </returns>
         public async Task StartAsync()
         {
-            var token = Config.Token;
+            // ReSharper disable once RedundantAssignment
+            var token = Config.ReleaseToken;
                 
+#if DEBUG
+            token = Config.DebugToken;
+#endif
+            
             if (string.IsNullOrWhiteSpace(token))
             {
                 throw new Exception("Bot token missing from _config.yml");
