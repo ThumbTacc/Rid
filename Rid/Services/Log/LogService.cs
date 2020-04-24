@@ -1,9 +1,8 @@
-﻿using System.Collections;
+﻿
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Discord;
 using Rid.Enums;
-using Rid.Helpers;
 
 namespace Rid.Services.Log
 {

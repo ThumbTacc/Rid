@@ -1,5 +1,4 @@
 ﻿using Rid.Bot;
-using Rid.Services.Main;
 
 namespace Rid.Data
 {

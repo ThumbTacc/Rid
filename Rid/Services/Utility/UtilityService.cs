@@ -1,23 +1,24 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
-using System.Numerics;
 using System.Text;
-using System.Threading.Tasks;
 using Discord;
-using Discord.Commands;
 using Discord.WebSocket;
-using Rid.Bot;
 using Rid.Services.Main;
 
 namespace Rid.Services.Utility
 {
+    /// <summary>
+    /// Implements <see cref="IUtilityService"/>.
+    /// </summary>
     public class UtilityService : IUtilityService
     {
         private readonly DiscordSocketClient _client;
 
+        /// <summary>
+        /// Constructs a new <see cref="UtilityService"/> with the given injected dependencies.
+        /// </summary>
+        /// <param name="client">The Discord client.</param>
         public UtilityService(DiscordSocketClient client)
         {
             _client = client;
@@ -27,6 +28,7 @@ namespace Rid.Services.Utility
         private const string Library = "Discord.Net 2.2.0";
         private const string Version = "Rid Developer";
 
+        /// <inheritdoc/>
         public IEnumerable<EmbedFieldBuilder> ListBotInfo()
         {
             var builders = new List<EmbedFieldBuilder>();
@@ -78,6 +80,7 @@ namespace Rid.Services.Utility
             return builders;
         }
 
+        /// <inheritdoc/>
         public IEnumerable<EmbedFieldBuilder> ListGuildInfo(Dictionary<string, object> info)
         {
             var builders = new List<EmbedFieldBuilder>();
@@ -97,6 +100,7 @@ namespace Rid.Services.Utility
             return builders;
         }
 
+        /// <inheritdoc/>
         public Dictionary<string, object> GetGuildInfo(SocketGuild guild)
         {
             return new Dictionary<string, object>
@@ -110,6 +114,7 @@ namespace Rid.Services.Utility
             };
         }
         
+        /// <inheritdoc/>
         public string GetUptime()
         {
             var days = StartupService.Stopwatch.Elapsed.Days;
@@ -128,6 +133,7 @@ namespace Rid.Services.Utility
             return builder.ToString();
         }
 
+        /// <inheritdoc/>
         public string GetClientStats()
         {
             var guilds = _client.Guilds.Count;
@@ -142,6 +148,7 @@ namespace Rid.Services.Utility
             return builder.ToString();
         }
         
+        /// <inheritdoc/>
         public string GetOperatingSystem()
         {
             return Environment.OSVersion.VersionString.Contains("NT") ? $"Windows\n{Environment.OSVersion.Version}" : Environment.OSVersion.VersionString;

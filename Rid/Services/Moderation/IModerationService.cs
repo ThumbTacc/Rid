@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using Discord;
+using Discord.WebSocket;
 
 namespace Rid.Services.Moderation
 {
@@ -14,7 +15,7 @@ namespace Rid.Services.Moderation
         /// <param name="guild">The <see cref="IGuild"/> where the ban is to be created.</param>
         /// <param name="user">The <see cref="IUser"/> to be banned.</param>
         /// <param name="executor">The <see cref="IUser"/> who executed the command.</param>
-        /// <param name="prune">The number of days of messages to be removed.</param>
+        /// <param name="prune">The number of days of <see cref="SocketMessage"/> to be removed.</param>
         /// <param name="reason">The reason for the ban.</param>
         /// <returns>
         /// A <see cref="Task"/> that returns upon completion.
@@ -65,14 +66,14 @@ namespace Rid.Services.Moderation
         Task Mute(IGuild guild, IUser user, IUser executor, double period, string reason);
 
         /// <summary>
-        /// Creates a mute role in the specified guild.
+        /// Creates a mute role in the specified <see cref="IGuild"/>.
         /// </summary>
         /// <param name="guild">The <see cref="IGuild"/> where the role is to be created.</param>
         /// <returns>
         /// An <see cref="IRole"/> called "rid-muted" to be used as the guild muted role.
         /// </returns>
         /// <remarks>
-        /// Specifically created for with the mute command.
+        /// Intended for use with the mute command.
         /// </remarks>
         Task<IRole> CreateMuteRole(IGuild guild);
     }

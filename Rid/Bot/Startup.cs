@@ -6,6 +6,7 @@ using Discord.Commands;
 using Discord.WebSocket;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Rid.Data;
 using Rid.Services.Help;
 using Rid.Services.Log;
 using Rid.Services.Main;
@@ -16,8 +17,15 @@ namespace Rid.Bot
 {
     public class Startup
     {
+        /// <summary>
+        /// The static <see cref="IConfigurationRoot"/> instance used in <see cref="Config"/>.
+        /// </summary>
         public static IConfigurationRoot Configuration { get; private set; }
 
+        /// <summary>
+        /// Creates a new <see cref="IConfigurationRoot"/> object that contains bot configuration data.
+        /// </summary>
+        /// <param name="args">Constructor argument.</param>
         public Startup(string[] args)
         {
             var builder = new ConfigurationBuilder()
@@ -27,12 +35,25 @@ namespace Rid.Bot
             Configuration = builder.Build();
         }
         
+        /// <summary>
+        /// Runs the bot application.
+        /// </summary>
+        /// <param name="args">Constructor argument.</param>
+        /// <returns>
+        /// A <see cref="Task"/> that returns upon completion.
+        /// </returns>
         public static async Task RunAsync(string[] args)
         {
             var startup = new Startup(args);
             await startup.RunAsync();
         }
         
+        /// <summary>
+        /// Creates a new instance of the <see cref="IServiceCollection"/> and builds the service provider.
+        /// </summary>
+        /// <returns>
+        /// A <see cref="Task"/> that returns upon completion.
+        /// </returns>
         private async Task RunAsync()
         {
             var services = new ServiceCollection();
@@ -51,6 +72,10 @@ namespace Rid.Bot
             await Task.Delay(-1);
         }
         
+        /// <summary>
+        /// Configures the <see cref="IServiceCollection"/>.
+        /// </summary>
+        /// <param name="services">The service collection.</param>
         private void ConfigureServices(IServiceCollection services)
         {
             services.AddSingleton(new DiscordSocketClient(new DiscordSocketConfig

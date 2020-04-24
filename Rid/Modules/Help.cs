@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Security.Permissions;
 using System.Threading.Tasks;
-using Discord;
 using Discord.Commands;
 using Rid.Helpers;
 using Rid.Services.Help;

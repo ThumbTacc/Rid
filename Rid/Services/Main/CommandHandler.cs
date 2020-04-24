@@ -8,8 +8,7 @@ using Rid.Data;
 namespace Rid.Services.Main
 {
     /// <summary>
-    /// Describes a service that handles the incoming <see cref="SocketMessage"/>. If the message is determined to be a command,
-    /// it executes the command and handles the post-execution result.
+    /// Describes a service that handles the incoming <see cref="SocketMessage"/>. 
     /// </summary>
     public class CommandHandler
     {
