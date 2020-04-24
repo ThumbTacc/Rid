@@ -42,7 +42,6 @@ namespace Rid.Services.Utility
                 .WithName("Developer")
                 .WithValue(Developer)
                 .WithIsInline(true);
-            ;
 
             builder2
                 .WithName("Library")
