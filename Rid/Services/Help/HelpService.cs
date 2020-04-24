@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using Discord;
@@ -66,7 +67,6 @@ namespace Rid.Services.Help
             }
             
             var builders = new List<EmbedFieldBuilder>();
-            
             var builder = new EmbedFieldBuilder();
 
             builder
@@ -77,11 +77,93 @@ namespace Rid.Services.Help
             
             return builders;
         }
+
+        public IEnumerable<EmbedFieldBuilder> ListCommandHelp(CommandInfo command)
+        {
+            var builders = new List<EmbedFieldBuilder>();
+            
+            var builder1 = new EmbedFieldBuilder();
+            var builder2 = new EmbedFieldBuilder();
+            
+            var usage = new StringBuilder();
+            
+            usage.Append($"{command.Name} ");
+
+            foreach (var parameter in command.Parameters)
+            {
+                usage.Append($"[{parameter.Name }] ");
+            }
+            
+            builder2
+                .WithName("Usage")
+                .WithValue(usage);
+            
+            builders.Add(builder2);
+            
+            var aliases = new StringBuilder();
+            
+            if (command.Aliases.Count != 1)
+            {
+                foreach (var alias in command.Aliases)
+                {
+                    aliases.Append($"{alias}, ");
+                }
+            }
+            else
+            {
+                aliases.Append("None");
+            }
+
+            builder1
+                .WithName("Aliases")
+                .WithValue(aliases);
+            
+            
+            foreach (var parameter in command.Parameters)
+            {
+                var builder3 = new EmbedFieldBuilder();
+
+                builder3
+                    .WithName(parameter.Name)
+                    .WithValue($"\n{parameter.Summary}");
+                
+                builders.Add(builder3);
+            }
+            
+            return builders;
+        }
         
         /// <inheritdoc/>
-        public CommandInfo GetCommandInfo(string module)
+        public CommandInfo GetCommandInfo(string command)
         {
-            return _commands.Commands.FirstOrDefault(m => string.Equals(m.Name, module, StringComparison.CurrentCultureIgnoreCase));
+            return _commands.Commands.FirstOrDefault(c => string.Equals(c.Name, command, StringComparison.CurrentCultureIgnoreCase));
+        }
+
+        public IEnumerable<EmbedFieldBuilder> ListGeneralHelp()
+        {
+            var builders = new List<EmbedFieldBuilder>();
+            
+            var builder1 = new EmbedFieldBuilder();
+            var builder2 = new EmbedFieldBuilder();
+            var builder3 = new EmbedFieldBuilder();
+
+            builder1
+                .WithName("?modules")
+                .WithValue("To see a list of command modules.");
+
+            builder2
+                .WithName("?commands [module]")
+                .WithValue("To see a list of commands within a module.");
+
+            builder3
+                .WithName("?help [command]")
+                .WithValue("To see more information about a command.");
+            
+            builders.Add(builder1);
+            builders.Add(builder2);
+            builders.Add(builder3);
+
+            return builders;
         }
     }
 }

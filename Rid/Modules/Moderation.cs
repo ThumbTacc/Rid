@@ -25,9 +25,16 @@ namespace Rid.Modules
         }
 
         [Command("ban")]
+        [Alias("b")]
         [Summary("Bans a specified user.")]
         [RequireUserPermission(GuildPermission.Administrator)]
-        public async Task Ban(SocketUser user, int prune = 1, string reason = "No Reason Provided.")
+        public async Task Ban(
+            [Summary("The user to be banned.")]
+            SocketUser user, 
+            [Summary("The number of days of messages to be deleted.\n(Default: 1)")]
+            int prune = 1, 
+            [Summary("The reason for the ban.\n(Default: \"No Reason Provided.\")")]
+            string reason = "No Reason Provided.")
         {
             try
             {
@@ -43,9 +50,16 @@ namespace Rid.Modules
         }
 
         [Command("banf")]
+        [Alias("bf")]
         [Summary("Bans a specified user using their Id.")]
         [RequireUserPermission(GuildPermission.BanMembers)]
-        public async Task BanForeign(ulong userId, int prune = 1, string reason = "No Reason Provided.")
+        public async Task BanForeign(
+            [Summary("The Id user to be banned.")]
+            ulong userId, 
+            [Summary("The number of days of messages to be deleted.\n(Default: 1)")]
+            int prune = 1, 
+            [Summary("The reason for the ban.\n(Default: \"No Reason Provided.\")")]
+            string reason = "No Reason Provided.")
         {
             try
             {
@@ -58,9 +72,16 @@ namespace Rid.Modules
         }
 
         [Command("mute")]
+        [Alias("m")]
         [Summary("Mutes as specified user.")]
         [RequireUserPermission(GuildPermission.MuteMembers)]
-        public async Task Mute(IUser user, double period = 10, string reason = "No Reason Provided.")
+        public async Task Mute(
+            [Summary("The user to be muted.")]
+            IUser user, 
+            [Summary("The length of the mute in minutes.\n(Default: 10)")]
+            double period = 10, 
+            [Summary("The reason for the mute.\n(Default: \"No Reason Provided.\")")]
+            string reason = "No Reason Provided.")
         {
             try
             {
@@ -76,9 +97,14 @@ namespace Rid.Modules
         }
 
         [Command("kick")]
+        [Alias("k")]
         [Summary("Kicks a specified user.")]
         [RequireUserPermission(GuildPermission.KickMembers)]
-        public async Task Kick(IUser user, string reason = "No Reason Provided.")
+        public async Task Kick(
+            [Summary("The user to be muted.")]
+            IUser user, 
+            [Summary("The reason for the kick.\n(Default: \"No Reason Provided.\")")]
+            string reason = "No Reason Provided.")
         {
             try
             {
@@ -94,9 +120,14 @@ namespace Rid.Modules
         }
 
         [Command("warn")]
+        [Alias("w")]
         [Summary("Warns a specified user.")]
         [RequireUserPermission(GuildPermission.KickMembers)]
-        public async Task Warn(IUser user, string reason = "No Reason Provided.")
+        public async Task Warn(
+            [Summary("The user to be warned.")]
+            IUser user, 
+            [Summary("The reason for the warn.\n(Default: \"No Reason Provided.\")")]
+            string reason = "No Reason Provided.")
         {
             try
             {

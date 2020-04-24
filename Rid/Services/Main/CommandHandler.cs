@@ -61,7 +61,7 @@ namespace Rid.Services.Main
         }
 
         /// <summary>
-        /// Handles the post-execution of a regardless of its final execution state.
+        /// Handles the post-execution of a command regardless of its final execution state.
         /// </summary>
         /// <param name="command">The command that was executed.</param>
         /// <param name="context">The <see cref="ICommandContext"/> of the command.</param>
@@ -73,6 +73,11 @@ namespace Rid.Services.Main
         {
             if (!result.IsSuccess)
             {
+                if (result.Error == CommandError.UnknownCommand)
+                {
+                    return;
+                }
+                
                 await context.Channel.SendMessageAsync(result.ErrorReason);
             }
         }
