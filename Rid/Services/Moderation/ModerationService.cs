@@ -4,6 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Discord;
 using Discord.WebSocket;
+using Rid.Data;
 using Rid.Enums;
 using Rid.Helpers;
 
@@ -71,10 +72,15 @@ namespace Rid.Services.Moderation
         /// <inheritdoc/>
         public async Task Mute(IGuild guild, IUser user, IUser executor, double period, string reason)
         {
-            if (executor.IsHigher(user))
+            var status = (user as SocketGuildUser).Roles.FirstOrDefault(r => r.Name == Config.Mute);
+            if (executor.IsHigher(user) && status != null)
             {
                 var role = await GetOrCreateMuteRole(guild);
                 await (user as IGuildUser).AddRoleAsync(role);
+            }
+            else if (status == null)
+            {
+                throw new Exception("This user is already muted. Please `?unmute` them first and mute again.");
             }
             else
             {
@@ -98,12 +104,12 @@ namespace Rid.Services.Moderation
         /// <inheritdoc/>
         public async Task<IRole> GetOrCreateMuteRole(IGuild guild)
         {
-            var role = guild.Roles.FirstOrDefault(r => r.Name == "rid-muted");
+            var role = guild.Roles.FirstOrDefault(r => r.Name == Config.Mute);
             
             if (role == null)
             {
-                await guild.CreateRoleAsync("rid-muted", new GuildPermissions(sendMessages: false), default, false, false);
-                return guild.Roles.First(r => r.Name == "rid-muted");
+                await guild.CreateRoleAsync(Config.Mute, new GuildPermissions(sendMessages: false), default, false, false);
+                return guild.Roles.First(r => r.Name == Config.Mute);
             }
             
             return role;

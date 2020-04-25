@@ -17,11 +17,16 @@ namespace Rid.Data
         /// <summary>
         /// The default command Prefix.
         /// </summary>
-        public const string Prefix = ".";
+        public const string Prefix = "?";
         
         /// <summary>
         /// The moderation log channel Id.
         /// </summary>
         public const ulong Log = 702617427577536562;
+
+        /// <summary>
+        /// The name of the muted role.
+        /// </summary>
+        public const string Mute = "rid-muted";
     }
 }
