@@ -70,6 +70,7 @@ namespace Rid.Services.Utility
                 .WithValue(GetOperatingSystem())
                 .WithIsInline(true);
 
+            // Comment
             builders.Add(builder1);
             builders.Add(builder2);
             builders.Add(builder3);
