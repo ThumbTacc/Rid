@@ -87,7 +87,6 @@ namespace Rid.Modules
             [Summary("The reason for the mute.\n(Default: \"No Reason Provided.\")")]
             string reason = "No Reason Provided.")
         {
-            /*
             try
             {
                 await _moderation.Mute(Context.Guild, user, Context.User, period, reason);
@@ -102,14 +101,6 @@ namespace Rid.Modules
             {
                 await ReplyAsync(e.Message);
             }
-            */
-            await _moderation.Mute(Context.Guild, user, Context.User, period, reason);
-            await _moderation.StartTimer(Context.Guild, user, period, measure);
-                
-            var builders = await _log.CreateLog(user, Context.User, reason, Infraction.Mute);
-            var channel = Context.Guild.GetChannel(Config.Log) as IMessageChannel;
-                
-            await channel.SendMessageAsync(embed: Embeds.CreateEmbed("Log", builders));
         }
 
         [Command("kick")]
