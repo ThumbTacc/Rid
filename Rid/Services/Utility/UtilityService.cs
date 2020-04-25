@@ -26,7 +26,7 @@ namespace Rid.Services.Utility
 
         private const string Developer = "Uchuu#9609";
         private const string Library = "Discord.Net 2.2.0";
-        private const string Version = "Rid Developer";
+        private const string Version = "Rid 1.0.2";
 
         /// <inheritdoc/>
         public IEnumerable<EmbedFieldBuilder> ListBotInfo()
