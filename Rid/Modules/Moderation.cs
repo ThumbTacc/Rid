@@ -116,7 +116,7 @@ namespace Rid.Modules
             try
             {
                 await _moderation.Kick(user, Context.User, reason);
-                    
+                
                 var builders = await _log.CreateLog(user, Context.User, reason, Infraction.Kick);
                 var channel = Context.Guild.GetChannel(Config.Log) as IMessageChannel;
                 
