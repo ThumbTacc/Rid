@@ -16,16 +16,16 @@ namespace Rid.Data
         /// The debug connection Token.
         /// </summary>
         public static readonly string DebugToken = Startup.Configuration["token:debug"];
+
+        /// <summary>
+        /// The moderation log channel Id.
+        /// </summary>
+        public static readonly ulong Log = ulong.Parse(Startup.Configuration["token:channel"]);
         
         /// <summary>
         /// The default command Prefix.
         /// </summary>
         public const string Prefix = "?";
-        
-        /// <summary>
-        /// The moderation log channel Id.
-        /// </summary>
-        public const ulong Log = 702617427577536562;
 
         /// <summary>
         /// The name of the muted role.

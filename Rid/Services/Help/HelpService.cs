@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Discord;
 using Discord.Commands;
+using Rid.Data;
 
 namespace Rid.Services.Help
 {
@@ -146,16 +147,18 @@ namespace Rid.Services.Help
             var builder2 = new EmbedFieldBuilder();
             var builder3 = new EmbedFieldBuilder();
 
+            const string prefix = Config.Prefix;
+            
             builder1
-                .WithName("?modules")
+                .WithName($"{prefix}modules")
                 .WithValue("To see a list of command modules.");
 
             builder2
-                .WithName("?commands [module]")
+                .WithName($"{prefix}commands [module]")
                 .WithValue("To see a list of commands within a module.");
 
             builder3
-                .WithName("?help [command]")
+                .WithName($"{prefix}help [command]")
                 .WithValue("To see more information about a command.");
             
             builders.Add(builder1);
