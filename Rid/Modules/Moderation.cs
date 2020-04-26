@@ -44,6 +44,7 @@ namespace Rid.Modules
                 var channel = Context.Guild.GetChannel(Config.Log) as IMessageChannel;
                 
                 await channel.SendMessageAsync(embed: Embeds.CreateEmbed("Log", builders));
+                await Context.Message.AddReactionAsync(new Emoji("✅"));
             }
             catch (Exception e)
             {
@@ -66,6 +67,7 @@ namespace Rid.Modules
             try
             {
                 await _moderation.BanForeign(Context.Guild, userId, Context.User, prune, reason);
+                await Context.Message.AddReactionAsync(new Emoji("✅"));
             }
             catch (Exception e)
             {
@@ -96,6 +98,7 @@ namespace Rid.Modules
                 var channel = Context.Guild.GetChannel(Config.Log) as IMessageChannel;
                 
                 await channel.SendMessageAsync(embed: Embeds.CreateEmbed("Log", builders));
+                await Context.Message.AddReactionAsync(new Emoji("✅"));
             }
             catch (Exception e)
             {
@@ -121,6 +124,7 @@ namespace Rid.Modules
                 var channel = Context.Guild.GetChannel(Config.Log) as IMessageChannel;
                 
                 await channel.SendMessageAsync(embed: Embeds.CreateEmbed("Log", builders));
+                await Context.Message.AddReactionAsync(new Emoji("✅"));
             }
             catch (Exception e)
             {
@@ -144,6 +148,7 @@ namespace Rid.Modules
                 var channel = Context.Guild.GetChannel(Config.Log) as IMessageChannel;
                 
                 await channel.SendMessageAsync(embed: Embeds.CreateEmbed("Log", builders));
+                await Context.Message.AddReactionAsync(new Emoji("✅"));
             }
             catch (Exception e)
             {
