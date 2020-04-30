@@ -33,6 +33,7 @@ namespace Rid.Modules
             SocketUser user, 
             [Summary("The number of days of messages to be deleted.\n(Default: 1)")]
             int prune = 1, 
+            [Remainder]
             [Summary("The reason for the ban.\n(Default: \"No Reason Provided.\")")]
             string reason = "No Reason Provided.")
         {
@@ -61,6 +62,7 @@ namespace Rid.Modules
             ulong userId, 
             [Summary("The number of days of messages to be deleted.\n(Default: 1)")]
             int prune = 1, 
+            [Remainder]
             [Summary("The reason for the ban.\n(Default: \"No Reason Provided.\")")]
             string reason = "No Reason Provided.")
         {
@@ -86,6 +88,7 @@ namespace Rid.Modules
             double period = 10, 
             [Summary("The mute period span.\n(Default: Minutes)\n(Available: Seconds, Minutes, Hours, Days)")]
             Measure measure = Measure.Minutes,
+            [Remainder]
             [Summary("The reason for the mute.\n(Default: \"No Reason Provided.\")")]
             string reason = "No Reason Provided.")
         {
@@ -113,6 +116,7 @@ namespace Rid.Modules
         public async Task Kick(
             [Summary("The user to be muted.")]
             IUser user, 
+            [Remainder]
             [Summary("The reason for the kick.\n(Default: \"No Reason Provided.\")")]
             string reason = "No Reason Provided.")
         {
@@ -139,6 +143,7 @@ namespace Rid.Modules
         public async Task Warn(
             [Summary("The user to be warned.")]
             IUser user, 
+            [Remainder]
             [Summary("The reason for the warn.\n(Default: \"No Reason Provided.\")")]
             string reason = "No Reason Provided.")
         {
